@@ -7,21 +7,62 @@
 
 Dynamixel Dxl(DXL_BUS_SERIAL1);
 
+
+int pos9=512;
+int pos10=512;
+int pos11=512;
+int pos12=512;
+int pos13=512;
+int pos14=512;
+int pos15=512;
+int pos16=512;
+int pos17=512;
+int pos18=512;
+
 void setup() {
   
-  Dxl.begin(3);
-  //Dxl.jointMode(6); //jointMode() is to use position mode
+  Dxl.begin(3);/*
+  Dxl.writeWord(9, 30, 512);
+  Dxl.writeWord(10, 30, 512);
+  Dxl.writeWord(11, 30, 512);
+  Dxl.writeWord(12, 30, 512);
+  Dxl.writeWord(13, 30, 512);
+  Dxl.writeWord(14, 30, 512);
+  Dxl.writeWord(15, 30, 512);
+  Dxl.writeWord(16, 30, 512);
+  Dxl.writeWord(17, 30, 512);
+  Dxl.writeWord(18, 30, 512);/**/
+
 
 }
 
 void loop() {  
-  //Turn dynamixel ID 1 to position 0  
-  //int pos5 = Dxl.readWord(5, 36); 
-  //int pos6 = Dxl.readWord(6, 36); 
-  Dxl.writeWord(4, 30,512);
- // Dxl.writeWord(6, 30, 1024-pos5);
- // Dxl.writeWord(5, 30, 1024-pos6);
-  delay(1000);
+  pos9 = Dxl.readWord(9, 36); 
+  pos10 = Dxl.readWord(10, 36); 
+  pos11 = Dxl.readWord(11, 36); 
+  pos12 = Dxl.readWord(12, 36); 
+  pos13 = Dxl.readWord(13, 36); 
+  pos14 = Dxl.readWord(14, 36); 
+  pos15 = Dxl.readWord(15, 36); 
+  pos16 = Dxl.readWord(16, 36); 
+  pos17 = Dxl.readWord(17, 36); 
+  pos18 = Dxl.readWord(18, 36);  
+ 
+ //65535
+  if(pos9!=65535)Dxl.writeWord(9, 30, pos10);
+  if(pos10!=65535)Dxl.writeWord(10, 30, pos9);
+  if(pos11!=65535)Dxl.writeWord(11, 30, pos14);
+  if(pos12!=65535)Dxl.writeWord(12, 30, pos13);
+  if(pos13!=65535)Dxl.writeWord(13, 30, pos12);
+  if(pos14!=65535)Dxl.writeWord(14, 30, pos11);
+  if(pos15!=65535)Dxl.writeWord(15, 30, pos16);
+  if(pos16!=65535)Dxl.writeWord(16, 30, pos15);
+  if(pos17!=65535)Dxl.writeWord(17, 30, pos18);
+  if(pos18!=65535)Dxl.writeWord(18, 30, pos17);
+
+  SerialUSB.println(pos15);
+  
+  delay(10);
 }
 
 
