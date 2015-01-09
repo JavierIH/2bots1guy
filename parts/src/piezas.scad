@@ -1,5 +1,5 @@
 use <raid3r/raid3r.scad>
-
+m2=1.25;
 m3=1.75;
 m4=2.25;
 
@@ -30,10 +30,10 @@ module bracket(){
 module armA(){
 	difference(){
 		cube([30,25,3],center=true);
-		translate([12,-8,0])cylinder(r=m3,h=30,$fn=20,center=true);
-		translate([12,8,0])cylinder(r=m3,h=30,$fn=20,center=true);
-		translate([-12,-8,0])cylinder(r=m3,h=30,$fn=20,center=true);
-		translate([-12,8,0])cylinder(r=m3,h=30,$fn=20,center=true);
+		translate([12,-8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([12,8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([-12,-8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([-12,8,0])cylinder(r=m2,h=30,$fn=20,center=true);
 	}
 }
 
@@ -74,4 +74,33 @@ module pinza(){
 	}
 }
 
-pinza();
+module pinza_baja(){
+	difference(){
+	union(){
+		cube([38,90,9]);
+		hull(){
+			translate([-3,91,10])cube([44,10,5]);
+			translate([-3,80,0])cube([44,10,5]);
+		}
+	}
+
+	translate([3,-5,3])cube([32,50,60]);
+
+	translate([-20,4,5.6])rotate([0,90,0])agujereado(4,1,100);
+
+	}
+}
+
+module junta(){
+difference(){
+		cube([30-9.75*2,25,3],center=true);
+		translate([2.25,-8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([2.25,8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([-2.25,-8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+		translate([-2.25,8,0])cylinder(r=m2,h=30,$fn=20,center=true);
+	}
+
+}
+
+
+junta();
