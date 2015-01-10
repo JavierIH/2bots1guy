@@ -5,7 +5,6 @@
 /* Control table defines */
 #define GOAL_POSITION 30
 
-Dynamixel Dxl(DXL_BUS_SERIAL1);
 
 
 int pos9=512;
@@ -21,7 +20,7 @@ int pos18=512;
 
 void setup() {
   
-  Dxl.begin(3);/*
+  Dxl.begin(1);/*
   Dxl.writeWord(9, 30, 512);
   Dxl.writeWord(10, 30, 512);
   Dxl.writeWord(11, 30, 512);
@@ -49,20 +48,18 @@ void loop() {
   pos18 = Dxl.readWord(18, 36);  
  
  //65535
-  if(pos9!=65535)Dxl.writeWord(9, 30, pos10);
-  if(pos10!=65535)Dxl.writeWord(10, 30, pos9);
-  if(pos11!=65535)Dxl.writeWord(11, 30, pos14);
-  if(pos12!=65535)Dxl.writeWord(12, 30, pos13);
-  if(pos13!=65535)Dxl.writeWord(13, 30, pos12);
-  if(pos14!=65535)Dxl.writeWord(14, 30, pos11);
-  if(pos15!=65535)Dxl.writeWord(15, 30, pos16);
-  if(pos16!=65535)Dxl.writeWord(16, 30, pos15);
-  if(pos17!=65535)Dxl.writeWord(17, 30, pos18);
-  if(pos18!=65535)Dxl.writeWord(18, 30, pos17);
+  Dxl.writeWord(9, 30, pos10);
+  Dxl.writeWord(10, 30, pos9);
+  Dxl.writeWord(11, 30, pos14);
+  Dxl.writeWord(12, 30, pos13);
+  Dxl.writeWord(13, 30, pos12);
+  Dxl.writeWord(14, 30, pos11);
+  Dxl.writeWord(15, 30, pos16);
+  Dxl.writeWord(16, 30, pos15);
+  Dxl.writeWord(17, 30, pos18);
+  Dxl.writeWord(18, 30, pos17);
 
-  SerialUSB.println(pos15);
   
-  delay(10);
 }
 
 
